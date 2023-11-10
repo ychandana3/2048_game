@@ -1,16 +1,28 @@
-
+body{
+  display: flex;
+  justify-content: center;
+}
 .grid-container{
   display:grid;
   background-color:#bbada0;
-  grid-template-columns: auto auto auto auto;
-  grid-template-rows: auto auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   gap: 16px;
   border: 16px solid #bbada0;
   width: 500px;
   height: 500px;
   box-sizing: border-box;
+  border-radius: 6px;
 }
 
 .grid-cell{
 background-color: rgba(238, 228, 218, 0.35);
+display: flex;
+justify-content: center;
+align-items: center;
+font-size:  55px;
+font-weight: bold;
+font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0), inset 0 0 0 1px rgba(255, 255, 255, 0);
+border-radius: 3px;
 }

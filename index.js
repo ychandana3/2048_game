@@ -1,12 +1,42 @@
 var grid = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+const bg = {
+  2: "#eee4da",
+  4: "#eee1c9",
+  8: "#f3b27a",
+  16: "#f69664",
+  32: "#f77c5f",
+  64: "#f75f3b",
+  128: "#edd073",
+  256: "#edd073",
+  512: "#eee4da",
+  2: "#eee4da",
+  2: "#eee4da",
+  2: "#eee4da",
+
+}
+const colors = {
+  2: '#776e65',
+  4: '#776e65',
+  8: '#f9f6f2',
+  16: '#f9f6f2',
+  32: '#f9f6f2',
+  64: '#f9f6f2',
+  128: '#f9f6f2',
+  256: '#f9f6f2',
+  512: '#f9f6f2'
+}
 const showOnScreen = () =>{
   console.log(grid);
   const cells = document.getElementsByClassName("grid-cell");
   for(let i = 0;i < 4; i++){
     for(let j = 0;j < 4; j++){
       cells[4*i + j].innerHTML = "";
+      cells[4*i + j].style.backgroundColor = "";
+        cells[4*i + j].style.color = "";
       if(grid[i][j] != 0){
         cells[4*i + j].innerHTML = grid[i][j];
+        cells[4*i + j].style.backgroundColor = bg[grid[i][j]];
+        cells[4*i + j].style.color = colors[grid[i][j]];
       }
     }
   }  

@@ -60,10 +60,13 @@ const showRandomValue = () =>{
 }
 const moveCells = () =>{
   document.addEventListener('keydown', (e) => {
+    gridInStringForm = grid.toString();
     if(e.key === "ArrowUp") moveUp();
     if(e.key === "ArrowDown") moveDown();
     if(e.key === "ArrowLeft") moveLeft();
     if(e.key === "ArrowRight") moveRight();
+    if(gridInStringForm !== grid.toString())
+      showRandomValue();
   })
 }
 const moveUp = () =>{
@@ -91,8 +94,6 @@ const moveUp = () =>{
       }
     }
   }
-  console.log(grid);
-  showRandomValue();
 }
 const moveDown = () =>{
   for(let c = 0;c < 4; c++){
@@ -119,8 +120,6 @@ const moveDown = () =>{
       }
     }
   }
-  console.log(grid);
-  showRandomValue();
 }
 const moveLeft = () =>{
   for(let r = 0;r < 4; r++){
@@ -147,8 +146,7 @@ const moveLeft = () =>{
       }
     }
   }
-  console.log(grid);
-  showRandomValue();
+  
 }
 const moveRight = () =>{
   for(let r = 0;r < 4; r++){
@@ -175,8 +173,7 @@ const moveRight = () =>{
       }
     }
   }
-  console.log(grid);
-  showRandomValue();
+  
 }
 const game = () =>{
   showRandomValues(); 

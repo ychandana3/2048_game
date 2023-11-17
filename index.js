@@ -1,4 +1,5 @@
 var grid = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]];
+let score = 0;
 const bg = {
   2: "#eee4da",
   4: "#eee1c9",
@@ -26,7 +27,6 @@ const colors = {
   512: '#f9f6f2'
 }
 const showOnScreen = () =>{
-  console.log(grid);
   const cells = document.getElementsByClassName("grid-cell");
   for(let i = 0;i < 4; i++){
     for(let j = 0;j < 4; j++){
@@ -37,6 +37,7 @@ const showOnScreen = () =>{
         cells[4*i + j].innerHTML = grid[i][j];
         cells[4*i + j].style.backgroundColor = bg[grid[i][j]];
         cells[4*i + j].style.color = colors[grid[i][j]];
+        
       }
     }
   }  
@@ -65,6 +66,7 @@ const moveCells = () =>{
     if(e.key === "ArrowDown") moveDown();
     if(e.key === "ArrowLeft") moveLeft();
     if(e.key === "ArrowRight") moveRight();
+    console.log(score);
     if(gridInStringForm !== grid.toString())
       showRandomValue();
   })
@@ -82,6 +84,7 @@ const moveUp = () =>{
         grid[row][c] = val;
       }
       else if(cur_num == val){
+        score += 2 * val;
         grid[row++][c] = 2 * val;
         val = 0;
         grid[r][c] = 0;
@@ -108,6 +111,7 @@ const moveDown = () =>{
         grid[row][c] = val;
       }
       else if(cur_num == val){
+        score += 2 * val;
         grid[row--][c] = 2 * val;
         val = 0;
         grid[r][c] = 0;
@@ -134,6 +138,7 @@ const moveLeft = () =>{
         grid[r][col] = val;
       }
       else if(cur_num == val){
+        score += 2 * val;
         grid[r][col++] = 2 * val;
         val = 0;
         grid[r][c] = 0;
@@ -161,6 +166,7 @@ const moveRight = () =>{
         grid[r][col] = val;
       }
       else if(cur_num == val){
+        score += 2 * val;
         grid[r][col--] = 2 * val;
         val = 0;
         grid[r][c] = 0;

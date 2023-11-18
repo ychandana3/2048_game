@@ -2,6 +2,13 @@ body{
   display: flex;
   justify-content: center;
 }
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .grid-container{
   display:grid;
   background-color:#bbada0;

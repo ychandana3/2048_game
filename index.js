@@ -13,7 +13,6 @@ const bg = {
   2: "#eee4da",
   2: "#eee4da",
   2: "#eee4da",
-
 }
 const colors = {
   2: '#776e65',
@@ -28,6 +27,7 @@ const colors = {
 }
 const showOnScreen = () =>{
   const cells = document.getElementsByClassName("grid-cell");
+  document.getElementById("score").innerHTML = score;
   for(let i = 0;i < 4; i++){
     for(let j = 0;j < 4; j++){
       cells[4*i + j].innerHTML = "";
@@ -59,8 +59,21 @@ const showRandomValue = () =>{
     grid[Math.floor(x/4)][x % 4] = 2;
     showOnScreen();
 }
+const isGameOver = () => {
+  for(let r = 0; r < 4; r++){
+    for(let c = 0; c < 4; c++){
+      if(grid[r][c] === 0)
+        return false;
+      if(r < 3 && grid[r][c] === grid[r + 1][c])
+        return false;
+      if(c < 3 && grid[r][c] === grid[r][c + 1])
+      return false;
+    }
+  }
+  return true;
+}
 const moveCells = () =>{
-  document.addEventListener('keydown', (e) => {
+  document.addEventListener('keydown', function handleKeydown(e){
     gridInStringForm = grid.toString();
     if(e.key === "ArrowUp") moveUp();
     if(e.key === "ArrowDown") moveDown();
@@ -69,7 +82,12 @@ const moveCells = () =>{
     console.log(score);
     if(gridInStringForm !== grid.toString())
       showRandomValue();
-  })
+      if(isGameOver()){
+        console.log('gameover');
+        document.removeEventListener('keydown', handleKeydown);
+      }
+  });
+  
 }
 const moveUp = () =>{
   for(let c = 0;c < 4; c++){
